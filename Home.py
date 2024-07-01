@@ -1,8 +1,10 @@
 #import Library yang dibutuhkan
 import streamlit as st
 
-sidebar_logo=("./images/logoUMMsaja.png")
-main_body_logo=("./images/logoUMMsaja.png")
+sidebar_logo=("images/logoUMMsaja.png")
+main_body_logo=("images/logoUMMsaja.png")
+
+st.logo(sidebar_logo, icon_image=main_body_logo)
 
 #mengatur tampilan halaman
 st.set_page_config(
@@ -10,8 +12,6 @@ st.set_page_config(
     page_icon=":earth_asia:",
     layout="wide",
 )
-
-st.logo(sidebar_logo, icon_image=main_body_logo)
 
 st.image('./images/logo umm berjejer.png', width=300)
 #judul halaman
