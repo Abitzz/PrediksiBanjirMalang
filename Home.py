@@ -1,8 +1,8 @@
 #import Library yang dibutuhkan
 import streamlit as st
 
-sidebar_logo="images/logoUMMsaja.png"
-main_body_logo="images/logoUMMsaja.png"
+sidebar_logo="images/logo_umm_saja.png"
+main_body_logo="images/logo_umm_saja.png"
 
 st.logo(sidebar_logo)
 
