@@ -63,7 +63,7 @@ def show_page_1():
 
     # Fungsi untuk melatih model dan menampilkan peta
     def train_and_display_map():
-        # Baca dan gabungkan file shapefile atau pickle
+        # Baca file shapefile atau pickle yang telah kita buat di artikel sebelumnya
         df = gpd.read_file("input/points_data_new.shp")
 
         # Gabungan shapefile digunakan sebagai area studi
