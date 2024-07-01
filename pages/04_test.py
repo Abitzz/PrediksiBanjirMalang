@@ -25,8 +25,8 @@ def load_and_merge_files(file_paths):
     merged_df = pd.concat(dfs, ignore_index=True)
     return merged_df
 
-sidebar_logo=("./images/logoUMMsaja.png")
-main_body_logo=("./images/logoUMMsaja.png")
+sidebar_logo=("images/logoUMMsaja.png")
+main_body_logo=("images/logoUMMsaja.png")
 
 st.logo(sidebar_logo, icon_image=main_body_logo)
 
