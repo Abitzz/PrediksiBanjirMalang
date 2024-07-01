@@ -4,7 +4,7 @@ import streamlit as st
 sidebar_logo="images/logo_umm_saja.png"
 main_body_logo="images/logo_umm_saja.png"
 
-st.logo(sidebar_logo)
+st.logo(sidebar_logo, icon_image=main_body_logo)
 
 #mengatur tampilan halaman
 st.set_page_config(
