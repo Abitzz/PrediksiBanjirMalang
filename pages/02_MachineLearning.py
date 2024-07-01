@@ -8,8 +8,22 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
 from sklearn.metrics import RocCurveDisplay
 from geocube.api.core import make_geocube
-import xarray as xr
 import streamlit as st
+
+# Define paths to the five files
+file_paths = [
+    "input/studyarea_blimbing.pkl",
+    "input/studyarea_kedungkandang.pkl",
+    "input/studyarea_klojen.pkl",
+    "input/studyarea_lowokwaru.pkl",
+    "input/studyarea_sukun.pkl"
+]
+
+def load_and_merge_files(file_paths):
+    # Load and merge the files into a single GeoDataFrame
+    dfs = [pd.read_pickle(file) for file in file_paths]
+    merged_df = pd.concat(dfs, ignore_index=True)
+    return merged_df
 
 sidebar_logo=("images/logoUMMsaja.png")
 main_body_logo=("images/logoUMMsaja.png")
@@ -52,10 +66,9 @@ def show_page_1():
         # Baca file shapefile atau pickle yang telah kita buat di artikel sebelumnya
         df = gpd.read_file("input/points_data_new.shp")
 
-        # Baca shapefile untuk seluruh area studi
-        #df_SA = gpd.read_file("input/titik_study_area_new.shp")
-        df_SA = pd.read_pickle("input/studyarea_kedungkandang.pkl")
-    
+        # Gabungan shapefile digunakan sebagai area studi
+        df_SA = load_and_merge_files(file_paths)
+
         # Definisikan variabel dependen yang perlu diprediksi (label)
         Y = df["ID"].values
 
@@ -155,11 +168,11 @@ def show_page_2():
 
     # Fungsi untuk melatih model dan menampilkan peta
     def train_and_display_map():
-        # Baca file shapefile atau pickle yang telah kita buat di artikel sebelumnya
+        # Baca dan gabungkan file shapefile atau pickle
         df = gpd.read_file("input/points_data_new.shp")
-    
-        # Baca shapefile untuk seluruh area studi
-        df_SA = gpd.read_file("input/titik_study_area_new.shp")
+
+        # Gabungan shapefile digunakan sebagai area studi
+        df_SA = load_and_merge_files(file_paths)
     
         # Definisikan variabel dependen yang perlu diprediksi (label)
         Y = df["ID"].values
@@ -179,10 +192,7 @@ def show_page_2():
         # Latih model pada data pelatihan
         model.fit(X_train, y_train)
     
-        # Prediksi kerentanan banjir pada data pengujian
-        prediction = model.predict(X_test)
-    
-        # Persiapkan data untuk prediksi area studi
+        # Persiapkan data untuk prediksi
         X_SA = df_SA.drop(labels=["ID", "geometry"], axis=1)
     
         # Prediksi kerentanan banjir
