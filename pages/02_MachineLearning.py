@@ -78,8 +78,7 @@ def show_page_1():
 
         # Bagi data menjadi pelatihan (training), validasi (validation), dan pengujian (testing)
         X_train_val, X_test, y_train_val, y_test = train_test_split(X, Y, test_size=test_size, shuffle=True, random_state=42)
-        val_size_adjusted = val_size / (1 - test_size)  # Adjust validation size relative to the training set
-        X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=val_size_adjusted, shuffle=True, random_state=42)
+        X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=val_size, shuffle=True, random_state=42)
 
         # RANDOM FOREST
         model = RandomForestClassifier(n_estimators=jum_pohon, random_state=42)  # Menggunakan nilai default dari parameter.
@@ -183,8 +182,7 @@ def show_page_2():
     
         # Bagi data menjadi pelatihan (training), validasi (validation), dan pengujian (testing)
         X_train_val, X_test, y_train_val, y_test = train_test_split(X, Y, test_size=test_size, shuffle=True, random_state=42)
-        val_size_adjusted = val_size / (1 - test_size)  # Adjust validation size relative to the training set
-        X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=val_size_adjusted, shuffle=True, random_state=42)
+        X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size=val_size, shuffle=True, random_state=42)
     
         # SVM
         model = SVC(kernel=kernel, probability=True)  # Menggunakan nilai default dari parameter.
