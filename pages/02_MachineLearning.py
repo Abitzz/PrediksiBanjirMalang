@@ -245,7 +245,7 @@ def show_page_2():
     
 
     # Tombol untuk melatih model dan menampilkan peta
-    if st.sidebar.button('Latih Model dan Tampilkan Peta'):
+    if st.sidebar.button('Latih Model dan Tampilkan Peta',disabled=True):
         train_and_display_map()
 
 
