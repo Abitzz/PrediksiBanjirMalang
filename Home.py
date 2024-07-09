@@ -28,4 +28,33 @@ st.write("Selamat datang di sistem prediksi banjir kami! "
 st.write("Terima kasih telah mengunjungi website kami. Kami sangat menghargai umpan balik dari Anda untuk membantu kami meningkatkan layanan dan konten. "
          "Mohon luangkan waktu sejenak untuk memberikan penilaian pada kelompok kami.")
 if st.button('Beri Penilaian'):
-    st.markdown("https://forms.gle/AASv92LsXara6Rer7")
+    st.markdown(
+    """
+    <style>
+    .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+    }
+
+    .button:hover {background-color: #3e8e41}
+
+    .button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+    </style>
+    <a href="https://forms.gle/AASv92LsXara6Rer7" target="_blank" class="button">Beri Penilaian</a>
+    """,
+    unsafe_allow_html=True
+)
