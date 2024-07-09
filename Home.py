@@ -10,7 +10,7 @@ st.logo(sidebar_logo, icon_image=main_body_logo)
 st.set_page_config(
     page_title="Prediksi Daerah Dampak Banjir",
     page_icon=":earth_asia:",
-    layout="wide",
+    layout="centered",
 )
 
 st.image('./images/logo umm berjejer.png', width=300)
