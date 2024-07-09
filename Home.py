@@ -24,3 +24,8 @@ st.write("Selamat datang di sistem prediksi banjir kami! "
          "penggunaan Geographic Information System (GIS), "
          "kami mengembangkan sistem yang memanfaatkan data spasial dan "
          "data histori banjir untuk memprediksi daerah dampak banjir dengan menggunakan Machine Learning.")
+
+st.write("Terima kasih telah mengunjungi website kami. Kami sangat menghargai umpan balik dari Anda untuk membantu kami meningkatkan layanan dan konten. "
+         "Mohon luangkan waktu sejenak untuk memberikan penilaian pada kelompok kami.")
+if st.button('Beri Penilaian'):
+    st.markdown("https://forms.gle/AASv92LsXara6Rer7")
