@@ -28,7 +28,5 @@ st.write("Selamat datang di sistem prediksi banjir kami! "
 
 st.write("Terima kasih telah mengunjungi website kami. Kami sangat menghargai umpan balik dari Anda untuk membantu kami meningkatkan layanan dan konten. "
          "Mohon luangkan waktu sejenak untuk memberikan penilaian pada kelompok kami.")
-if st.button('Beri Penilaian'):
-    js = "window.open('https://forms.gle/AASv92LsXara6Rer7')"  # Open link in new tab
-    html = '<script>{}</script>'.format(js)
-    st.markdown(html, unsafe_allow_html=True)
+
+st.markdown("[Isi Formulir Penilaian](link_google_form)")
