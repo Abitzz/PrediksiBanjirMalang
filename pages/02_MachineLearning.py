@@ -47,7 +47,7 @@ def main():
 
 def show_page_1():
     st.subheader('Menggunakan Machine Learning RF')
-    st.info("Halaman ini tidak dapat melakukan training data. Jika ingin mencoba training data, silakan datang ke booth kami.")
+    st.info("Halaman ini tidak dapat melakukan training data. Jika ingin mencoba training data, silakan datang ke booth kami. di meja kelompok 4")
 
     st.write("Random forest merupakan metode bagging yaitu metode yang membangkitkan "
          "sejumlah tree dari data sample dimana pembuatan satu tree pada saat training tidak "
