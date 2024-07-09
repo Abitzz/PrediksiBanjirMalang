@@ -145,8 +145,8 @@ def show_page_1():
         st.pyplot(fig_roc)
 
         # Tombol untuk melatih model dan menampilkan peta
-    if st.sidebar.button('Latih Model dan Tampilkan Peta'):
-        train_and_display_map()
+    #if st.sidebar.button('Latih Model dan Tampilkan Peta'):
+        #train_and_display_map()
 
 
 def show_page_2():
