@@ -53,7 +53,7 @@ def show_page_1():
          "bergantung pada tree sebelumnya kemudian keputusan diambil berdasarkan voting "
          "terbanyak (Wibowo, Saikhu, & Soelaiman, 2016).")
 
-    st.info("Halaman ini tidak dapat melakukan training data. Jika ingin mencoba training data, silakan datang ke booth kami. di meja kelompok 4")
+    st.info("Fungsi Traning Data untuk sementara kami matikan. Jika ingin mencoba training data, silakan datang ke booth kami. di meja kelompok 4")
 
     # Input dari pengguna untuk persentase pembagian data
     st.sidebar.header("Pengaturan Pembagian Data")
@@ -158,7 +158,7 @@ def show_page_2():
             "fitur yang memiliki dimensi tinggi dan dilatih dengan menggunakan algoritma "
             "pembelajaran berdasarkan teori optimasi.")
 
-    st.info("Halaman ini tidak dapat melakukan training data. Jika ingin mencoba training data, silakan datang ke booth kami.")
+    st.info("Fungsi Traning Data untuk sementara kami matikan. Jika ingin mencoba training data, silakan datang ke booth kami. di meja kelompok 4")
 
     # Input dari pengguna untuk persentase pembagian data
     st.sidebar.header("Pengaturan Pembagian Data")
