@@ -26,7 +26,7 @@ st.write("Selamat datang di sistem prediksi banjir kami! "
          "kami mengembangkan sistem yang memanfaatkan data spasial dan "
          "data histori banjir untuk memprediksi daerah dampak banjir dengan menggunakan Machine Learning.")
 
-st.subheader("Terima kasih telah mengunjungi website kami. Kami sangat menghargai umpan balik dari Anda untuk membantu kami meningkatkan layanan dan konten. "
+st.info("Terima kasih telah mengunjungi website kami. Kami sangat menghargai umpan balik dari Anda untuk membantu kami meningkatkan layanan dan konten. "
          "Mohon luangkan waktu sejenak untuk memberikan penilaian pada kelompok kami.")
 
 st.markdown("[Isi Formulir Penilaian](https://forms.gle/AASv92LsXara6Rer7)")
