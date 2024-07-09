@@ -47,6 +47,8 @@ def main():
 
 def show_page_1():
     st.subheader('Menggunakan Machine Learning RF')
+    st.info("Halaman ini tidak dapat melakukan training data. Jika ingin mencoba training data, silakan datang ke booth kami.")
+
     st.write("Random forest merupakan metode bagging yaitu metode yang membangkitkan "
          "sejumlah tree dari data sample dimana pembuatan satu tree pada saat training tidak "
          "bergantung pada tree sebelumnya kemudian keputusan diambil berdasarkan voting "
@@ -149,6 +151,8 @@ def show_page_1():
 
 def show_page_2():
     st.subheader('Menggunakan Machine Learning SVM')
+    st.info("Halaman ini tidak dapat melakukan training data. Jika ingin mencoba training data, silakan datang ke booth kami.")
+    
     st.write("Metode Support Vector Machine(SVM) merupakan sistem pembelajaran yang "
             "menggunakan ruang hipotesis yang berupa fungsi-fungsi linear di dalam sebuah "
             "fitur yang memiliki dimensi tinggi dan dilatih dengan menggunakan algoritma "
@@ -245,8 +249,8 @@ def show_page_2():
     
 
     # Tombol untuk melatih model dan menampilkan peta
-    if st.sidebar.button('Latih Model dan Tampilkan Peta',disabled=True):
-        train_and_display_map()
+    #if st.sidebar.button('Latih Model dan Tampilkan Peta'):
+        #train_and_display_map()
 
 
 if __name__ == '__main__':
