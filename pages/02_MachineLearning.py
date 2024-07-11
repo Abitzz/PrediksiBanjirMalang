@@ -10,6 +10,13 @@ from sklearn.metrics import RocCurveDisplay,confusion_matrix,ConfusionMatrixDisp
 from geocube.api.core import make_geocube
 import streamlit as st
 
+#mengatur tampilan halaman
+st.set_page_config(
+    page_title="Prediksi Daerah Dampak Banjir",
+    page_icon=":earth_asia:",
+    layout="centered",
+)
+
 # Define paths to the five files
 file_paths = [
     "input/studyarea_blimbing.pkl",
@@ -135,10 +142,9 @@ def show_page_1():
 
         # Plot Kurva ROC
         st.subheader('Kurva ROC')
-        st.write("Kurva ROC (Receiver Operating Characteristic) adalah plot grafis yang mengilustrasikan kemampuan diagnostik "
-                "dari sistem klasifikasi biner saat ambang batas diskriminasi bervariasi. Plot ini menunjukkan trade-off antara "
-                "sensitivitas (atau TPR) dan spesifisitas (1 - FPR). Model dengan kurva ROC yang lebih dekat ke sudut kiri atas "
-                "menunjukkan performa yang lebih baik.")
+        st.write("Kurva ROC (Receiver Operating Characteristic) digunakan untuk mengukur kinerja model klasifikasi. "
+                 "Semakin dekat kurva ROC ke sudut kiri atas, semakin baik performa model tersebut. Area under the curve "
+                 "(AUC) adalah nilai yang mewakili kualitas model; semakin mendekati 1, semakin baik model tersebut.")
         fig_roc, ax_roc = plt.subplots()
         model_disp = RocCurveDisplay.from_estimator(model, X_test, y_test, ax=ax_roc, alpha=0.8)
         st.pyplot(fig_roc)
@@ -166,11 +172,11 @@ def show_page_1():
         st.info(f'Recall: {recall}')
         st.info(f'F1-Score: {f1}')
 
-        st.write("Penjelasan :"
-                 "Accuracy: Mengukur seberapa sering model membuat prediksi yang benar."
-                 "Precision: Mengukur seberapa akurat model dalam membuat prediksi positif (berapa banyak prediksi positif yang benar dari total prediksi positif)."
-                 "Recall: Mengukur seberapa baik model dalam mendeteksi semua kasus positif (berapa banyak kasus positif yang benar terdeteksi dari total kasus positif yang sebenarnya)."
-                 "F1-Score: Menggabungkan precision dan recall dalam satu metrik yang mempertimbangkan keduanya.")
+        st.write("Penjelasan :")
+        st.write("Accuracy: Mengukur seberapa sering model membuat prediksi yang benar.")
+        st.write("Precision: Mengukur seberapa akurat model dalam membuat prediksi positif (berapa banyak prediksi positif yang benar dari total prediksi positif).")
+        st.write("Recall: Mengukur seberapa baik model dalam mendeteksi semua kasus positif (berapa banyak kasus positif yang benar terdeteksi dari total kasus positif yang sebenarnya).")
+        st.write("F1-Score: Menggabungkan precision dan recall dalam satu metrik yang mempertimbangkan keduanya.")
 
         # Tombol untuk melatih model dan menampilkan peta
     if st.sidebar.button('Latih Model dan Tampilkan Peta'):
@@ -261,15 +267,14 @@ def show_page_2():
                 "Setiap sel dalam matriks menunjukkan korelasi antara dua variabel. Ini membantu memahami "
                 "bagaimana perubahan dalam satu variabel berhubungan dengan perubahan dalam variabel lain.")
         fig_corr, ax_corr = plt.subplots(figsize=(10, 10))
-        sns.heatmap(corrMatrix, annot=True, linewidths=.5, ax=ax_corr)
+        sns.heatmap(corrMatrix, annot=True, linewidths=.5, ax=ax_corr,)
         st.pyplot(fig_corr)
 
         # Plot Kurva ROC
         st.subheader('Kurva ROC')
-        st.write("Kurva ROC (Receiver Operating Characteristic) adalah plot grafis yang mengilustrasikan kemampuan diagnostik "
-                "dari sistem klasifikasi biner saat ambang batas diskriminasi bervariasi. Plot ini menunjukkan trade-off antara "
-                "sensitivitas (atau TPR) dan spesifisitas (1 - FPR). Model dengan kurva ROC yang lebih dekat ke sudut kiri atas "
-                "menunjukkan performa yang lebih baik.")
+        st.write("Kurva ROC (Receiver Operating Characteristic) digunakan untuk mengukur kinerja model klasifikasi. "
+                 "Semakin dekat kurva ROC ke sudut kiri atas, semakin baik performa model tersebut. Area under the curve "
+                 "(AUC) adalah nilai yang mewakili kualitas model; semakin mendekati 1, semakin baik model tersebut.")
         fig_roc, ax_roc = plt.subplots()
         model_disp = RocCurveDisplay.from_estimator(model, X_test, y_test, ax=ax_roc, alpha=0.8)
         st.pyplot(fig_roc)
@@ -282,7 +287,7 @@ def show_page_2():
         cm = confusion_matrix(y_test, y_pred)
         fig_cm, ax_cm = plt.subplots()
         disp = ConfusionMatrixDisplay(confusion_matrix=cm)
-        disp.plot(ax=ax_cm)
+        disp.plot(ax=ax_cm,cmap='Blues')
         st.pyplot(fig_cm)
 
         # Metrics: Accuracy, Precision, Recall, F1-Score
@@ -297,11 +302,11 @@ def show_page_2():
         st.info(f'Recall: {recall}')
         st.info(f'F1-Score: {f1}')
         
-        st.write("Penjelasan :"
-                 "Accuracy: Mengukur seberapa sering model membuat prediksi yang benar."
-                 "Precision: Mengukur seberapa akurat model dalam membuat prediksi positif (berapa banyak prediksi positif yang benar dari total prediksi positif)."
-                 "Recall: Mengukur seberapa baik model dalam mendeteksi semua kasus positif (berapa banyak kasus positif yang benar terdeteksi dari total kasus positif yang sebenarnya)."
-                 "F1-Score: Menggabungkan precision dan recall dalam satu metrik yang mempertimbangkan keduanya.")
+        st.write("Penjelasan :")
+        st.write("Accuracy: Mengukur seberapa sering model membuat prediksi yang benar.")
+        st.write("Precision: Mengukur seberapa akurat model dalam membuat prediksi positif (berapa banyak prediksi positif yang benar dari total prediksi positif).")
+        st.write("Recall: Mengukur seberapa baik model dalam mendeteksi semua kasus positif (berapa banyak kasus positif yang benar terdeteksi dari total kasus positif yang sebenarnya).")
+        st.write("F1-Score: Menggabungkan precision dan recall dalam satu metrik yang mempertimbangkan keduanya.")
 
     # Tombol untuk melatih model dan menampilkan peta
     if st.sidebar.button('Latih Model dan Tampilkan Peta'):
