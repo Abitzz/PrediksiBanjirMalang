@@ -161,10 +161,10 @@ def show_page_1():
         recall = recall_score(y_test, y_pred, average='macro')
         f1 = f1_score(y_test, y_pred, average='macro')
         
-        st.write(f'Accuracy: {accuracy}')
-        st.write(f'Precision: {precision}')
-        st.write(f'Recall: {recall}')
-        st.write(f'F1-Score: {f1}')
+        st.info(f'Accuracy: {accuracy}')
+        st.info(f'Precision: {precision}')
+        st.info(f'Recall: {recall}')
+        st.info(f'F1-Score: {f1}')
 
         st.write("Penjelasan :"
                  "Accuracy: Mengukur seberapa sering model membuat prediksi yang benar."
