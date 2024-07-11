@@ -145,6 +145,8 @@ def show_page_1():
 
         # Confusion Matrix
         st.subheader('Confusion Matrix')
+        st.write("Confusion Matrix adalah pengukuran performa untuk masalah klasifikasi machine learning dimana keluaran dapat "
+                 "berupa dua kelas atau lebih. Confusion Matrix adalah tabel dengan 4 kombinasi berbeda dari nilai prediksi dan nilai aktual.")
         y_pred = model.predict(X_test)
         cm = confusion_matrix(y_test, y_pred)
         fig_cm, ax_cm = plt.subplots()
@@ -163,6 +165,12 @@ def show_page_1():
         st.write(f'Precision: {precision}')
         st.write(f'Recall: {recall}')
         st.write(f'F1-Score: {f1}')
+
+        st.write("Penjelasan :"
+                 "Accuracy: Mengukur seberapa sering model membuat prediksi yang benar."
+                 "Precision: Mengukur seberapa akurat model dalam membuat prediksi positif (berapa banyak prediksi positif yang benar dari total prediksi positif)."
+                 "Recall: Mengukur seberapa baik model dalam mendeteksi semua kasus positif (berapa banyak kasus positif yang benar terdeteksi dari total kasus positif yang sebenarnya)."
+                 "F1-Score: Menggabungkan precision dan recall dalam satu metrik yang mempertimbangkan keduanya.")
 
         # Tombol untuk melatih model dan menampilkan peta
     if st.sidebar.button('Latih Model dan Tampilkan Peta'):
@@ -268,6 +276,8 @@ def show_page_2():
 
         # Confusion Matrix
         st.subheader('Confusion Matrix')
+        st.write("Confusion Matrix adalah pengukuran performa untuk masalah klasifikasi machine learning dimana keluaran dapat "
+                 "berupa dua kelas atau lebih. Confusion Matrix adalah tabel dengan 4 kombinasi berbeda dari nilai prediksi dan nilai aktual.")
         y_pred = model.predict(X_test)
         cm = confusion_matrix(y_test, y_pred)
         fig_cm, ax_cm = plt.subplots()
@@ -282,10 +292,16 @@ def show_page_2():
         recall = recall_score(y_test, y_pred, average='macro')
         f1 = f1_score(y_test, y_pred, average='macro')
         
-        st.write(f'Accuracy: {accuracy}')
-        st.write(f'Precision: {precision}')
-        st.write(f'Recall: {recall}')
-        st.write(f'F1-Score: {f1}')
+        st.info(f'Accuracy: {accuracy}')
+        st.info(f'Precision: {precision}')
+        st.info(f'Recall: {recall}')
+        st.info(f'F1-Score: {f1}')
+        
+        st.write("Penjelasan :"
+                 "Accuracy: Mengukur seberapa sering model membuat prediksi yang benar."
+                 "Precision: Mengukur seberapa akurat model dalam membuat prediksi positif (berapa banyak prediksi positif yang benar dari total prediksi positif)."
+                 "Recall: Mengukur seberapa baik model dalam mendeteksi semua kasus positif (berapa banyak kasus positif yang benar terdeteksi dari total kasus positif yang sebenarnya)."
+                 "F1-Score: Menggabungkan precision dan recall dalam satu metrik yang mempertimbangkan keduanya.")
 
     # Tombol untuk melatih model dan menampilkan peta
     if st.sidebar.button('Latih Model dan Tampilkan Peta'):
