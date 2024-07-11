@@ -3,10 +3,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import geopandas as gpd
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,cross_val_score,GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import SVC
-from sklearn.metrics import RocCurveDisplay
+from sklearn.metrics import RocCurveDisplay,confusion_matrix,ConfusionMatrixDisplay,precision_score,recall_score,f1_score,accuracy_score,mean_absolute_error,mean_squared_error
 from geocube.api.core import make_geocube
 import streamlit as st
 
@@ -52,8 +52,6 @@ def show_page_1():
          "sejumlah tree dari data sample dimana pembuatan satu tree pada saat training tidak "
          "bergantung pada tree sebelumnya kemudian keputusan diambil berdasarkan voting "
          "terbanyak (Wibowo, Saikhu, & Soelaiman, 2016).")
-
-    st.info("Fungsi Traning Data untuk sementara kami matikan. Jika ingin mencoba training data, silakan datang ke booth kami. di meja kelompok 4")
 
     # Input dari pengguna untuk persentase pembagian data
     st.sidebar.header("Pengaturan Pembagian Data")
@@ -145,9 +143,30 @@ def show_page_1():
         model_disp = RocCurveDisplay.from_estimator(model, X_test, y_test, ax=ax_roc, alpha=0.8)
         st.pyplot(fig_roc)
 
+        # Confusion Matrix
+        st.subheader('Confusion Matrix')
+        y_pred = model.predict(X_test)
+        cm = confusion_matrix(y_test, y_pred)
+        fig_cm, ax_cm = plt.subplots()
+        disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+        disp.plot(ax=ax_cm)
+        st.pyplot(fig_cm)
+
+        # Metrics: Accuracy, Precision, Recall, F1-Score
+        st.subheader('Evaluation Metrics')
+        accuracy = accuracy_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred, average='macro')
+        recall = recall_score(y_test, y_pred, average='macro')
+        f1 = f1_score(y_test, y_pred, average='macro')
+        
+        st.write(f'Accuracy: {accuracy}')
+        st.write(f'Precision: {precision}')
+        st.write(f'Recall: {recall}')
+        st.write(f'F1-Score: {f1}')
+
         # Tombol untuk melatih model dan menampilkan peta
-    #if st.sidebar.button('Latih Model dan Tampilkan Peta'):
-        #train_and_display_map()
+    if st.sidebar.button('Latih Model dan Tampilkan Peta'):
+        train_and_display_map()
 
 
 def show_page_2():
@@ -157,8 +176,6 @@ def show_page_2():
             "menggunakan ruang hipotesis yang berupa fungsi-fungsi linear di dalam sebuah "
             "fitur yang memiliki dimensi tinggi dan dilatih dengan menggunakan algoritma "
             "pembelajaran berdasarkan teori optimasi.")
-
-    st.info("Fungsi Traning Data untuk sementara kami matikan. Jika ingin mencoba training data, silakan datang ke booth kami. di meja kelompok 4")
 
     # Input dari pengguna untuk persentase pembagian data
     st.sidebar.header("Pengaturan Pembagian Data")
@@ -248,11 +265,31 @@ def show_page_2():
         fig_roc, ax_roc = plt.subplots()
         model_disp = RocCurveDisplay.from_estimator(model, X_test, y_test, ax=ax_roc, alpha=0.8)
         st.pyplot(fig_roc)
-    
+
+        # Confusion Matrix
+        st.subheader('Confusion Matrix')
+        y_pred = model.predict(X_test)
+        cm = confusion_matrix(y_test, y_pred)
+        fig_cm, ax_cm = plt.subplots()
+        disp = ConfusionMatrixDisplay(confusion_matrix=cm)
+        disp.plot(ax=ax_cm)
+        st.pyplot(fig_cm)
+
+        # Metrics: Accuracy, Precision, Recall, F1-Score
+        st.subheader('Evaluation Metrics')
+        accuracy = accuracy_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred, average='macro')
+        recall = recall_score(y_test, y_pred, average='macro')
+        f1 = f1_score(y_test, y_pred, average='macro')
+        
+        st.write(f'Accuracy: {accuracy}')
+        st.write(f'Precision: {precision}')
+        st.write(f'Recall: {recall}')
+        st.write(f'F1-Score: {f1}')
 
     # Tombol untuk melatih model dan menampilkan peta
-    #if st.sidebar.button('Latih Model dan Tampilkan Peta'):
-        #train_and_display_map()
+    if st.sidebar.button('Latih Model dan Tampilkan Peta'):
+        train_and_display_map()
 
 
 if __name__ == '__main__':
